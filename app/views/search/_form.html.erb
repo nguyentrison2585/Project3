@@ -1,0 +1,21 @@
+<%= form_for :task, url: tasks_path, method: "GET" do |f| %>
+  <div class="input-group md-form form-sm form-2 pl-0">
+    <%= f.text_field :free_text, class: "form-control my-0 py-1 red-border", placeholder: "Tìm kiếm" %>
+
+    <div class="input-group-append">
+      <button type="submit" class="btn-search">
+      <span class="input-group-text lime lighten-2" id="basic-text1"><i class="fa fa-search"></i></span>
+        </button>
+    </div>
+
+  </div>
+  <!----------------------------details search------------------------------>
+  <div class="details-search row m-3">
+    <%= f.select :field, options_for_select([["Lĩnh vực", "Lĩnh vực"], ["Kế toán", "Kế toán"], ["Bán hàng", "Bán hàng"], ["Sản xuất", "Sản xuất"], ["Nông nghiệp", "Nông nghiệp"], ["CNTT", "CNTT"], ["Dịch thuât", "Dịch thuật"], ["Tiếp thị", "Tiếp thị"], ["Giáo dục", "Giáo dục"]],
+                                            selected: params[:field]), {}, {class: "custom-select col-md"} %>
+    <%= f.select :area, options_for_select([["Khu vực", "Khu vực"], ["Hai Bà Trưng", "Hai Bà Trưng"], ["Hoàng Mai", "Hoàng Mai"], ["Thanh Xuân", "Thanh Xuân"], ["Đống Đa", "Đống Đa"], ["Ba Đình", "Ba Đình"]],
+                                           selected: params[:area]), {}, {class: "custom-select ml-2 col-md"} %>
+    <%= f.select :salary, options_for_select([["Tiền lương", "Tiền lương"], ["500000 đồng trở xuống", "500000 đồng trở xuống"], ["1000000 đồng trở xuống", "1000000 đồng trở xuống"], ["5000000 đồng trở xuống", "5.000.000 đồng trở xuống"], ["10000000 đồng trở xuống", "10000000 đồng trở xuống"]],
+                                             selected: params[:salary]), {}, {class: "custom-select ml-2 col-md"} %>
+  </div>
+<% end %>

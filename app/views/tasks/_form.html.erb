@@ -1,0 +1,27 @@
+<div class="list-group-item task-content-height">
+  <div class="row h-100">
+    <div class="col-md-6">
+      <p class="mb-4"><%= task.content[0..90].strip %>...</p>
+      <%= link_to task, class: "read_more btn btn-link" do %>
+        Hiển thị thêm
+      <% end %>
+    </div>
+    <div class="col-md-2">
+      <div class="row max-width h-50 pt-0 category-tasks custom-text-center">
+        <%= task.field %>
+      </div>
+      <div class="row max-width h-50 pt-0 category-tasks custom-text-center">
+        <%= task.area %>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="row max-width h-50 pt-0 category-tasks custom-text-center">
+        <%= task.salary %> <%= task.money_unit %>
+      </div>
+      <div class="row max-width h-50 pt-0 category-tasks custom-text-center">
+        <%= task.veteran ? "Thiếu kinh nghiệm" : "Có kinh nghiệm" %>
+      </div>
+    </div>
+    <div class="col-md-2 category-tasks pt-4 custom-text-center">Ngày nộp đơn <%= task.registration_deadline.strftime("%Y-%m-%d") %></div>
+  </div>
+</div>

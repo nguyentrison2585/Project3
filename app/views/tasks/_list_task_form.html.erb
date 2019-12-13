@@ -1,0 +1,17 @@
+<div class="card-header">
+  Danh sách công việc
+  <div class="pull-right">
+    <select class="custom-select ml-2 col-md" id="inputGroupSelect01">
+      <option selected>Sắp xếp thứ tự</option>
+      <option value="1">Yêu cầu mới</option>
+      <option value="2">Đánh giá</option>
+    </select>
+  </div>
+</div>
+<div class="card-body">
+  <ul class="list-group">
+    <% tasks.each do |e| %>
+      <%= render "tasks/form", task: e %>
+    <% end %>
+  </ul>
+</div>

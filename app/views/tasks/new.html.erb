@@ -1,0 +1,52 @@
+<div class="text-center">
+  <h2>Đăng tải công việc</h2>
+  <%= form_for @task do |f| %>
+
+    <div class="form-group row">
+      <%= f.label "Tên", class: "col-md-3" %><br/>
+      <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control col-md-6", placeholder: "Tên" %>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label "Nội dung", class: "col-md-3" %><br/>
+      <%= f.text_area :content, autofocus: true, autocomplete: "content", class: "form-control col-md-6", placeholder: "Nội dung" %>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label "Lĩnh vực", class: "col-md-3" %><br/>
+      <%= f.text_field :field, autofocus: true, autocomplete: "skill", class: "form-control col-md-6", placeholder: "Lĩnh vực" %>
+    </div>
+
+     <div class="form-group row">
+      <%= f.label "Khu vực", class: "col-md-3" %><br/>
+      <%= f.text_field :area, autofocus: true, autocomplete: "certificate", class: "form-control col-md-6", placeholder: "Khu vực" %>
+    </div>
+
+     <div class="form-group row">
+      <%= f.label "Mức lương", class: "col-md-3" %><br/>
+      <%= f.text_field :salary, autofocus: true, autocomplete: "self_introduction", class: "form-control col-md-6", placeholder: "Mức lương" %>
+    </div>
+
+     <div class="form-group row">
+      <%= f.label "Mô tả", class: "col-md-3" %><br/>
+      <%= f.text_area :descript_url, autofocus: true, autocomplete: "descript_url", class: "form-control col-md-6", placeholder: "Mô tả" %>
+    </div>
+
+
+    <div class="form-group row">
+      <%= f.label "Đơn vị tiền tệ", class: "col-md-3" %><br/>
+      <%= f.email_field :money_unit, autofocus: true, autocomplete: "money_unit", class: "form-control col-md-6", placeholder: "Đơn vị tiền tệ" %>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label "Thời gian thực hiện", class: "col-md-3" %><br/>
+      <%= f.password_field :time_to_do, autocomplete: "time_to_do", class: "form-control col-md-6", placeholder: "Thời gian thực hiện" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Đăng tải", class: "btn btn-primary" %>
+    </div>
+
+  <% end %>
+
+</div>

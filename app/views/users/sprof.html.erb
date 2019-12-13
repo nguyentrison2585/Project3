@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style type="text/css">
+    .button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+
+    .w3-myfont {
+      font-family: "Comic Sans MS", cursive, sans-serif;
+    }
+
+    li + li {
+      border-left: 1px solid #333;
+    }
+
+    dt {
+      margin-top: 10px;
+      /* float: left; */
+    }
+
+    img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .profilebox {
+      background-color: #F2F2F2;
+      padding: 10px;
+    }
+
+    strong {
+      font-size: 20px;
+    }
+
+    .profbox {
+      margin-bottom: 10px;
+    }
+  </style>
+  <title>W3.CSS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+<!-- Tiêu đề -->
+<div class="w3-container w3-teal">
+  <h1>Hồ sơ</h1>
+</div>
+<!-- Nội dung -->
+<div class="w3-container w3-myfont" style="background: #f2f2f2; padding: 10px; box-shadow: -8px 8px 50px -10px;">
+  <!-- Hồ sơ -->
+  <div class="w3-container row">
+    <!-- Ảnh -->
+    <div class="col-md-4" style="padding: 0;">
+      <p><%= image_tag "https://2.bp.blogspot.com/-fjf5yU5r1Jk/WE1VD1BBKpI/AAAAAAAAjgI/bXwGoigAPJYvScMPtzJtzbOJfoGQO2C_ACEw/s1600/15349541_533868826819201_3350340522319981193_n.jpg", alt: "Ảnh sinh viên" %></p>
+    </div>
+    <!-- Thông tin cá nhân -->
+    <div class="col-md-4" style="padding-top: 20px;">
+      <dl class="list-group">
+        <dt>Tên</dt>
+        <dd><%= @user.name %></dd>
+        <dt>Ngày sinh</dt>
+        <dd><%= @user.birthday.strftime("%B %d, %Y") %></dd>
+        <dt>Địa chỉ</dt>
+        <dd><%= @user.address %></dd>
+        <dt>Kỹ năng</dt>
+        <dd><%= @user.skill %></dd>
+        <dt>Trình độ</dt>
+        <dd><%= @user.certificate %></dd>
+      </dl>
+    </div>
+    <!-- Đánh giá -->
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header" style="text-align: center; background: #009999; color: white;"><strong>評価</strong>
+        </div>
+        <div class="card-body" style="background: white; text-align: center;"><h1>3.0 điểm</h1></div>
+        <div class="card-footer" style="text-align: center; background: white;">★★★☆☆</div>
+      </div>
+    </div>
+  </div>
+  <!-- Tự giới thiệu -->
+  <div class="profbox">
+    <div class="w3-container w3-teal"><h3>Tự giới thiệu</h3></div>
+    <div class="w3-container" style="background: white;"><p><%= @user.self_introduction %></p></div>
+  </div>
+  <!-- Công việc liên quan -->
+  <% if !@tasks.nil? %>
+    <div class="profbox">
+      <div class="w3-container w3-teal"><h3>Danh sách công việc</h3></div>
+      <!-- Danh sách công việc -->
+      <div class="w3-container" style="background: white; padding: 10px;">
+        <ul class="list-group" style="list-style:none;">
+
+          <% @tasks.each do |task| %>
+            <% matching_task = @matching_tasks.find_by(task_id: task.id) %>
+            <div class="list-group-item" style="border: 1px solid #333">
+              <div class="row">
+                <li class="col-md-6"><%= task.name %><br><a href=>Công ty:</a>
+                  <%= link_to task.user.name, user_path(task.user.id), target: '_blank' %>
+                </li>
+                <li class="col-md-2 custom-text-center" style="text-align: center;"><%= get_status matching_task ? matching_task.status : 0 %></li>
+                <li class="col-md-2 custom-text-center" style="text-align: center;"><%= link_to matching_task.status == 3 ? "Hủy bỏ" : "", "#" %></li>
+                <li class="col-md-2 custom-text-center" style="text-align: center;"><a href=>DM</a></li>
+              </div>
+            </div>
+          <% end %>
+
+        </ul>
+      </div>
+    </div>
+  <% end %>
+</div>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<div class="text-center">
+  <h2>Đăng ký</h2>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="form-group row">
+      <%= f.label "Tên", class: "col-md-3" %><br/>
+      <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control col-md-6", placeholder: "Tên" %>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label "Ngày sinh", class: "col-md-3" %><br/>
+      <%= f.date_field :birthday, autofocus: true, autocomplete: "birthday", class: "form-control col-md-6", placeholder: "Ngày sinh" %>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label "Địa chỉ", class: "col-md-3" %><br/>
+      <%= f.text_field :address, autofocus: true, autocomplete: "address", class: "form-control col-md-6", placeholder: "Địa chỉ" %>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label "Kỹ năng", class: "col-md-3" %><br/>
+      <%= f.text_field :skill, autofocus: true, autocomplete: "skill", class: "form-control col-md-6", placeholder: "Kỹ năng" %>
+    </div>
+
+     <div class="form-group row">
+      <%= f.label "Trình độ", class: "col-md-3" %><br/>
+      <%= f.text_field :certificate, autofocus: true, autocomplete: "certificate", class: "form-control col-md-6", placeholder: "Trình độ" %>
+    </div>
+
+     <div class="form-group row">
+      <%= f.label "Tự giới thiệu", class: "col-md-3" %><br/>
+      <%= f.text_area :self_introduction, autofocus: true, autocomplete: "self_introduction", class: "form-control col-md-6", placeholder: "Tự giới thiệu" %>
+    </div>
+
+     <div class="form-group row">
+      <%= f.label "Thông tin tài khoản", class: "col-md-3" %><br/>
+      <%= f.text_field :bank_account_number, autofocus: true, autocomplete: "bank_account_number", class: "form-control col-md-6", placeholder: "Thông tin tài khoản" %>
+    </div>
+
+
+    <div class="form-group row">
+      <%= f.label "Email", class: "col-md-3" %><br/>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control col-md-6", placeholder: "Email" %>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label "Mật khẩu", class: "col-md-3" %><br/>
+      <%= f.password_field :password, autocomplete: "new-password", class: "form-control col-md-6", placeholder: "Mật khẩu" %>
+      <% if @minimum_password_length %>
+        <em>(Tối thiểu <%= @minimum_password_length %> ký tự)</em>
+      <% end %><br/>
+    </div>
+    <div class="form-group row">
+      <%= f.label "Nhập lại mật khẩu", class: "col-md-3" %><br/>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control col-md-6", placeholder: "Nhập lại mật khẩu" %>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label "Vai trò", class: "col-md-3" %><br/>
+        <%= f.radio_button :role, 2, class: "mt-2 m-2" %>
+        <%= f.label "Tự do" %>
+        <%= f.radio_button :role, 1, class: "mt-2 m-2" %>
+        <%= f.label "Công ty" %>
+        <%= f.radio_button :role, 0, class: "mt-2 m-2" %>
+        <%= f.label "Sinh viên" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Đăng ký", class: "btn btn-primary" %>
+    </div>
+
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+</div>

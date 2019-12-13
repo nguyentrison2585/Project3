@@ -1,0 +1,107 @@
+.checkbox-veteran {
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.task-content-height {
+  height: 140px;
+}
+
+.category-tasks {
+  border: 1px solid #c3d0dd;
+  border-radius: 5px;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.h-65px {
+  height: 65px;
+}
+
+.mt-100px {
+  margin-top: 100px;
+}
+
+body {
+  background-color: white;
+}
+
+.nav-color {
+  background-color: #356da5 !important;
+}
+
+.logo-color {
+  font-weight: bold;
+  color: white !important;
+  font-size: 22px;
+}
+
+.nav-user-name-style {
+  color: white !important;
+}
+
+.admin-list-task {
+  border: 1px solid #dae2e9;
+  border-radius: 10px;
+  min-height: 140px;
+  max-height: 200px;
+}
+
+.min-max-height {
+  min-height: 140px;
+  max-height: 200px;
+}
+
+.border-right {
+  border-right: 1px solid #776eb2;
+}
+
+.color-white {
+  color: white !important;
+}
+
+.darken-3 {
+  background-color: #2a415d;
+}
+
+.white-text {
+  color: white;
+}
+
+#basic-text1 {
+  background-color: #50a7f4;
+  color: white;
+}
+
+.read_more {
+  position: absolute;
+  right: 4%;
+  bottom: -8%;
+  height: 35%;
+}
+
+.custom-text-center {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-dropdown, .navbar-expand-lg .navbar-collapse {
+  float: right;
+  display: contents !important;
+}
+
+.show-custom {
+  right: 45px;
+  display: unset;
+}
+
+.search-result-title-color {
+  color: #356ca4;
+}
+
+button {
+  padding: 0;
+}

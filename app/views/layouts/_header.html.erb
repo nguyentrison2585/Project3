@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light nav-color">
+  <a class="navbar-brand logo-color col-md ml-4 mt-1" href="/">Kết hợp công việc đơn giản</a>
+  <% if user_signed_in? && current_user.role == 3 %>
+    <a class="navbar-brand color-white offset-md-1 col-md mt-1" href="/admin/users">Danh sách người dùng</a>
+    <a class="navbar-brand color-white col-md mt-1" href="/admin">Danh sách công việc</a>
+  <% end %>
+  <button class="navbar-toggler col-md" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse custom-dropdown col-md ml-2" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <% if user_signed_in? %>
+        <li class="nav-item dropdown show-custom">
+          <a class="nav-link dropdown-toggle nav-user-name-style show-custom" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= current_user.name %>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <!--学生-->
+            <% if current_user.role == 0 %>
+              <%= link_to "Hồ sơ", users_student_path, class: "dropdown-item" %>
+            <% else %>
+              <!--企業-->
+              <% if current_user.role == 1 || current_user.role == 2 %>
+                <%= link_to "Hồ sơ", users_profile_path, class: "dropdown-item" %>
+              <% end %>
+            <% end %>
+            <%= link_to "Đăng xuất", destroy_user_session_url, class: "dropdown-item show-custom", method: "delete" %>
+          </div>
+        </li>
+      <% else %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle nav-user-name-style" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Đăng nhập tại đây
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <%= link_to "Đăng nhập", new_user_session_path, class: "dropdown-item" %>
+            <%= link_to "Đăng ký", new_user_registration_path, class: "dropdown-item" %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

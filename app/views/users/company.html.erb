@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style type="text/css">
+    .button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+
+    .w3-myfont {
+      font-family: "Comic Sans MS", cursive, sans-serif;
+
+    }
+
+    li + li {
+      border-left: 1px solid #333;
+    }
+
+    dt {
+      margin-top: 10px;
+    }
+
+    img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .profilebox {
+      background-color: #F2F2F2;
+      padding: 10px;
+    }
+
+    strong {
+      font-size: 20px;
+    }
+
+    .profbox {
+      margin-bottom: 10px;
+    }
+  </style>
+  <title>W3.CSS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+<div class="w3-container w3-teal">
+  <h1>Hồ sơ</h1>
+</div>
+<div class="w3-container w3-myfont" style="background: #f2f2f2; padding: 10px; box-shadow: -8px 8px 50px -10px;">
+  <!-- Thông tin cơ bản -->
+  <div class="w3-container row">
+    <!-- Ảnh -->
+    <div class="col-md-4">
+      <p><%= image_tag "https://wsm.framgia.vn/assets/logo_framgia-58c446c37727ba4bc8317121c321edd3d4ed081787fac85cb08240dcef9dd062.png", alt: "Ảnh công ty" %></p>
+    </div>
+    <!-- Thông tin cá nhân -->
+    <div class="col-md-4">
+      <dl class="list-group">
+        <dt>Tên</dt>
+        <dd><%= @user.name %></dd>
+        <dt>Địa chỉ</dt>
+        <dd><%= @user.address %></dd>
+        <dt>Liên hệ</dt>
+        <dd>03-6419-7633</dd>
+      </dl>
+    </div>
+    <!-- Đánh giá -->
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header" style="text-align: center; background: #009999; color: white;"><strong>Đánh giá</strong>
+        </div>
+        <div class="card-body" style="background: white; text-align: center;"><h1>3.0 điểm</h1></div>
+        <div class="card-footer" style="text-align: center; background: white;">★★★☆☆</div>
+      </div>
+      <button class="btn btn-success btn-lg" style="width: 80%; margin: 10px 10%; color: white;">
+        <%= link_to "Bài đăng mới", new_task_path %>
+      </button>
+    </div>
+  </div>
+  <!-- Tự giới thiệu -->
+  <div class="profbox">
+    <div class="w3-container w3-teal"><h3>Giới thiệu công ty</h3></div>
+    <div class="w3-container" style="background: white;"><p><%= @user.self_introduction %></p></div>
+  </div>
+  <ul class="list-group" style="list-style:none; margin-top: 10px;">
+    <!-- Công việc liên quan -->
+    <% if !@tasks.nil? %>
+      <div class="profbox">
+        <div class="w3-container w3-teal"><h3>Danh sách công việc</h3></div>
+        <!-- Danh sách công việc -->
+        <div class="w3-container" style="background: white; padding: 10px;">
+          <ul class="list-group" style="list-style:none;">
+            <% @tasks.each do |task| %>
+              <% matching_tasks = task.matching_tasks %>
+              <div class="list-group-item" style="border: 1px solid #333">
+                <div class="row">
+                  <li class="col-md-4 custom-text-center"><%= task.name %></li>
+                  <% @task_status = task.status %>
+                  <div class="col-md-4">
+                    <% matching_tasks.each do |matching_task| %>
+                      <% @task_status = matching_task.status %>
+                      <div class="row">
+                        <%= link_to matching_task.user.name, user_path(id: matching_task.user.id), class: "col col-md-5", target: "_blank" %>
+                        <%= link_to "Phê duyệt", "#", class: "col-md" %>
+                        <%= link_to "Từ chối", "#", class: "col-md" %>
+                      </div>
+                    <% end %>
+                  </div>
+                  <li class="col-md-2 custom-text-center" style="text-align: center;"><%= get_company_task_status @task_status %>
+                    <br>
+                  <li class="col-md custom-text-center" style="text-align: center;">
+                    <a><%= link_to @task_status == 8 ? "Hoàn thành" : "Chưa hoàn thành", "#" %></a></li>
+                  <li class="col-md custom-text-center" style="text-align: center;"><a href=>DM</a></li>
+                  </li>
+                </div>
+              </div>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+  </ul>
+</div>
+</body>
+</html>
+
+
+
+
